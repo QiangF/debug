@@ -1,0 +1,27 @@
+*include,input="./mesh.inp"
+*physical constants,absolute zero=-273.15,stefan boltzmann=5.67e-11
+*material,name=titanium
+*density
+4.5e-9
+*conductivity
+30.
+*specific heat
+0.72e9
+*solid section,elset=billet,material=titanium
+*initial conditions,type=temperature
+billet,25
+*amplitude,name=a1
+0.,.3,1.,1.
+*amplitude,name=a2
+0.0,0.3,3600.0,0.8,7200,1.0
+*step,inc=100
+*heat transfer
+10,7200
+*viewfactor,write
+** *boundary,amplitude=a1
+** ndown,11,11,1000.
+*radiate,amplitude=a2
+CONVECTION,r,1000.,1.0
+*node print,nset=billet
+nt
+*end step
